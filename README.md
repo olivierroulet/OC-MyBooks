@@ -1,3 +1,5 @@
-# OC-MyBooks
+# OC-MicroCMS
 
-Code source initial de l'activité 1 du cours OpenClassrooms "Evoluez vers une architecture PHP professionnelle".
+Support du cours OpenClassrooms "Evoluer vers une architecture PHP professionnelle".
+
+Itération 4 : modélisation objet de l'accès aux données.

@@ -8,30 +8,15 @@
 	"buffers":
 	[
 		{
-			"file": "index.php",
+			"contents": "<?php\n\nuse Symfony\\Component\\Debug\\ErrorHandler;\nuse Symfony\\Component\\Debug\\ExceptionHandler;\n\n// Register global error and exception handlers\nErrorHandler::register();\nExceptionHandler::register();\n\n// Register service providers.\n$app->register(new Silex\\Provider\\DoctrineServiceProvider());\n\n// Register services.\n$app['dao.article'] = function ($app) {\n    return new MicroCMS\\DAO\\ArticleDAO($app['db']);\n};\n",
+			"file": "app/app.php",
+			"file_size": 413,
+			"file_write_time": 131508251562406357,
 			"settings":
 			{
-				"buffer_size": 244,
+				"buffer_size": 412,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "view.php",
-			"settings":
-			{
-				"buffer_size": 500,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "mybooks.css",
-			"settings":
-			{
-				"buffer_size": 121,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -88,9 +73,34 @@
 	},
 	"expanded_folders":
 	[
+		"/C/wamp64/www/OCMybooks",
+		"/C/wamp64/www/OCMybooks/app",
+		"/C/wamp64/www/OCMybooks/app/config",
+		"/C/wamp64/www/OCMybooks/src",
+		"/C/wamp64/www/OCMybooks/src/DAO",
+		"/C/wamp64/www/OCMybooks/src/Domain",
+		"/C/wamp64/www/OCMybooks/views",
+		"/C/wamp64/www/OCMybooks/web"
 	],
 	"file_history":
 	[
+		"/C/wamp64/www/OCMybooks/app/app.php",
+		"/C/wamp64/bin/apache/apache2.4.27/conf/extra/httpd-vhosts.conf",
+		"/C/wamp64/www/OCMybooks/views/view.php",
+		"/C/wamp64/www/OCMybooks/app/config/prod.php",
+		"/C/wamp64/www/OCMybooks/app/routes.php",
+		"/C/wamp64/www/OCMybooks/app/config/dev.php",
+		"/C/wamp64/www/OCMybooks/src/DAO/BookDAO.php",
+		"/C/wamp64/www/OCMybooks/src/Domain/Book.php",
+		"/C/wamp64/www/OCMybooks/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationReader.php",
+		"/C/wamp64/www/OCMybooks/web/mybooks.css",
+		"/C/wamp64/www/OCMybooks/web/index.php",
+		"/C/wamp64/www/OCMybooks/.gitignore",
+		"/C/wamp64/www/OCMybooks/composer.json",
+		"/C/wamp64/www/OCMybooks/web/.htaccess",
+		"/C/wamp64/www/MicroCMS/src/Domain/Comment.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/wamp64/www/OCMybooks/src/model.php",
 		"/C/wamp64/www/OCMybooks/model.php",
 		"/C/wamp64/www/MicroCMS/composer.json",
 		"/C/wamp64/www/MicroCMS/web/css/microcms.css",
@@ -98,10 +108,8 @@
 		"/C/wamp64/www/MicroCMS/src/model.php",
 		"/C/wamp64/www/MicroCMS/app/routes.php",
 		"/C/wamp64/www/MicroCMS/web/.htaccess",
-		"/C/wamp64/bin/apache/apache2.4.27/conf/extra/httpd-vhosts.conf",
 		"/C/wamp64/www/MicroCMS/web/microcms.css",
 		"/C/wamp64/www/MicroCMS/.gitignore",
-		"/C/Windows/System32/drivers/etc/hosts",
 		"/C/wamp64/www/MicroCMS/db/content.sql",
 		"/C/wamp64/www/MicroCMS/db/structure.sql",
 		"/C/wamp64/www/MicroCMS/db/database.sql",
@@ -114,7 +122,7 @@
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 51.0
 	},
 	"find_in_files":
 	{
@@ -128,6 +136,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"article",
+			"articles",
 			"title_footer"
 		],
 		"highlight": true,
@@ -146,91 +156,30 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.php",
+					"file": "app/app.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 244,
+						"buffer_size": 412,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								241,
-								241
+								372,
+								380
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"auto_name": "",
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "view.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 500,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								500,
-								500
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"open_with_edit": true,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "mybooks.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								121,
-								121
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -244,7 +193,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 51.0
 	},
 	"input":
 	{
@@ -281,7 +230,7 @@
 	"project": "OCMybooks.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 98.0
 	},
 	"save_all_on_build": true,
 	"select_file":
