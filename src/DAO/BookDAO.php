@@ -2,11 +2,27 @@
 
 namespace OCMybooks\DAO;
 
+use Doctrine\DBAL\Connection;
 use OCMybooks\Domain\Book;
 
-class BookDAO extends DAO
+class BookDAO
 {
-    
+    /**
+     * Database connection
+     *
+     * @var \Doctrine\DBAL\Connection
+     */
+    private $db;
+
+    /**
+     * Constructor
+     *
+     * @param \Doctrine\DBAL\Connection The database connection object
+     */
+    public function __construct(Connection $db) {
+        $this->db = $db;
+    }
+
     /**
      * Return a list of all books, sorted by date (most recent first).
      *
@@ -37,6 +53,7 @@ class BookDAO extends DAO
         $book->setTitle($row['book_title']);
         $book->setIsbn($row['book_isbn']);
         $book->setSummary($row['book_summary']);
+        $book->setAuthor($row['auth_id']);
         return $book;
     }
 }

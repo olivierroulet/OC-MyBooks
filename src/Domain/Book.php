@@ -1,6 +1,6 @@
 <?php
 
-namespace OCMybooks\Domain;
+namespace OCMybooks\domain;
 
 class Book
 {
@@ -33,12 +33,12 @@ class Book
     private $summary;
 
     /**
-     * Associated author.
+     * Book author.
      *
-     * @var \OCMybooks\Domain\Author
+     * @var string
      */
     private $author;
-
+    
     /**
      * @return integer
      */
@@ -119,10 +119,8 @@ class Book
         return $this;
     }
 
-    
-
     /**
-     * @return \OCMybooks\Domain\Author
+     * @return string
      */
     public function getAuthor()
     {
@@ -130,11 +128,11 @@ class Book
     }
 
     /**
-     * @param \OCMybooks\Domain\Author $author
+     * @param string $author
      *
      * @return self
      */
-    public function setAuthor(\OCMybooks\Domain\Author $author)
+    public function setAuthor($author)
     {
         $this->author = $author;
 
