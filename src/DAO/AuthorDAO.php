@@ -6,7 +6,8 @@ use OCMybooks\Domain\Author;
 
 class AuthorDAO extends DAO 
 {
-        /**
+
+    /**
      * Returns a author matching the supplied id.
      *
      * @param integer $id
@@ -22,11 +23,11 @@ class AuthorDAO extends DAO
             throw new \Exception("No author matching id " . $id);
     }
 
-        /**
+    /**
      * Creates an Author object based on a DB row.
      *
-     * @param array $row The DB row containing Book data.
-     * @return \OCMybooks\Domain\Book
+     * @param array $row The DB row containing Author data.
+     * @return \OCMybooks\Domain\Author
      */
     protected function buildDomainObject(array $row) {
         $author = new Author();

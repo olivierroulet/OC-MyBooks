@@ -43,6 +43,20 @@ class BookDAO extends DAO
             throw new \Exception("No article matching id " . $id);
     }
 
+    /**
+     * Returns an author id for a book id.
+     *
+     * @param integer $id
+     *
+     * @return integer auth_id for this book 
+     */
+    public function findAuthor($id) {
+        $sql = "SELECT book_id, auth_id FROM book where book_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        $authorid=$row['auth_id'];
+        return $authorid;
+    }
+
         /**
      * Creates an Book object based on a DB row.
      *
@@ -59,6 +73,3 @@ class BookDAO extends DAO
         return $book;
     }
 }
-
-
-// SELECT `book_id`,`book_title`, `book_isbn`, `book_summary`, `auth_first_name`, `auth_last_name` FROM book INNER JOIN author ON book.auth_id = author.auth_id
