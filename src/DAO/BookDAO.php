@@ -53,8 +53,8 @@ class BookDAO extends DAO
     public function findAuthor($id) {
         $sql = "SELECT book_id, auth_id FROM book where book_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
-        $authorid=$row['auth_id'];
-        return $authorid;
+        $authid=$row['auth_id'];
+        return $authid;
     }
 
         /**
