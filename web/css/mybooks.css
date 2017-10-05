@@ -1,5 +1,5 @@
 body { 
-    padding-top: 40px; 
+    padding-top: 50px; 
 }
 
 .footer {
@@ -13,6 +13,3 @@ body {
     text-align: center;
 }
 
-.bookTitle:hover, .bookTitle:focus {
-    text-decoration: none;
-}

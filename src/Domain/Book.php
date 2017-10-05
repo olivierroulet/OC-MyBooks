@@ -33,9 +33,9 @@ class Book
     private $summary;
 
     /**
-     * Associated article.
+     * Book author.
      *
-     * @var \MicroCMS\Domain\Author
+     * @var string
      */
     private $author;
     
@@ -120,7 +120,7 @@ class Book
     }
 
     /**
-     * @return \MicroCMS\Domain\Author
+     * @return string
      */
     public function getAuthor()
     {
@@ -128,11 +128,11 @@ class Book
     }
 
     /**
-     * @param \MicroCMS\Domain\Author $author
+     * @param string $author
      *
      * @return self
      */
-    public function setAuthor(\MicroCMS\Domain\Author $author)
+    public function setAuthor($author)
     {
         $this->author = $author;
 

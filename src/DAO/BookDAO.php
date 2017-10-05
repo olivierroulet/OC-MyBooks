@@ -2,11 +2,26 @@
 
 namespace OCMybooks\DAO;
 
+use Doctrine\DBAL\Connection;
 use OCMybooks\Domain\Book;
-use OCMybooks\Domain\Author;
 
-class BookDAO extends DAO
+class BookDAO
 {
+    /**
+     * Database connection
+     *
+     * @var \Doctrine\DBAL\Connection
+     */
+    private $db;
+
+    /**
+     * Constructor
+     *
+     * @param \Doctrine\DBAL\Connection The database connection object
+     */
+    public function __construct(Connection $db) {
+        $this->db = $db;
+    }
 
     /**
      * Return a list of all books, sorted by date (most recent first).
@@ -14,62 +29,31 @@ class BookDAO extends DAO
      * @return array A list of all books.
      */
     public function findAll() {
-        $sql = "SELECT `book_id`,`book_title`, `book_isbn`, `book_summary`, `auth_first_name`, `auth_last_name` FROM book INNER JOIN author ON book.auth_id = author.auth_id ORDER BY book_id DESC";
-        $result = $this->getDb()->fetchAll($sql);
+        $sql = "select * from book order by book_id desc";
+        $result = $this->db->fetchAll($sql);
         
         // Convert query result to an array of domain objects
         $books = array();
         foreach ($result as $row) {
             $bookId = $row['book_id'];
-            $books[$bookId] = $this->buildDomainObject($row);
+            $books[$bookId] = $this->buildBook($row);
         }
         return $books;
     }
 
     /**
-     * Returns a book matching the supplied id.
-     *
-     * @param integer $id
-     *
-     * @return \OCMybooks\Domain\Book|throws an exception if no matching book is found
-     */
-    public function find($id) {
-        $sql = "SELECT `book_id`,`book_title`, `book_isbn`, `book_summary`, `auth_first_name`, `auth_last_name` FROM book INNER JOIN author ON book.auth_id = author.auth_id where book_id=?";
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
-
-        if ($row)
-            return $this->buildDomainObject($row);
-        else
-            throw new \Exception("No article matching id " . $id);
-    }
-
-    /**
-     * Returns an author id for a book id.
-     *
-     * @param integer $id
-     *
-     * @return integer auth_id for this book 
-     */
-    public function findAuthor($id) {
-        $sql = "SELECT book_id, auth_id FROM book where book_id=?";
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
-        $authid=$row['auth_id'];
-        return $authid;
-    }
-
-        /**
      * Creates an Book object based on a DB row.
      *
      * @param array $row The DB row containing Book data.
      * @return \OCMybooks\Domain\Book
      */
-    protected function buildDomainObject(array $row) {
+    private function buildBook(array $row) {
         $book = new Book();
-        $author = new Author();
         $book->setId($row['book_id']);
         $book->setTitle($row['book_title']);
         $book->setIsbn($row['book_isbn']);
         $book->setSummary($row['book_summary']);
+        $book->setAuthor($row['auth_id']);
         return $book;
     }
 }
