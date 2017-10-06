@@ -7,9 +7,8 @@ body {
     padding-top: 10px;
     text-align: center;
 }
-.footer {
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-    text-align: center;
+
+.bookTitle:hover, .bookTitle:focus {
+    text-decoration: none;
 }
 

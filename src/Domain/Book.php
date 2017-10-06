@@ -132,7 +132,7 @@ class Book
      *
      * @return self
      */
-    public function setAuthor($author)
+    public function setAuthor(Author $author)
     {
         $this->author = $author;
 
